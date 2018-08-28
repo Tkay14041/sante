@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.css">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.4/jquery.mobile-1.4.4.min.js"></script>
+</head>
+<body>
+
+
+
+<!-- tinder div -->
+<div id="container">
+
+    <!--　一枚目　-->
+    <div class="buddy" style="display: block;">
+        <div class="avatar"  style="display: block; background-image: url(../../static/img/megchan.jpg)">
+
+        </div>
+    </div>
+
+<!--　　二枚目 -->
+    <div class="buddy">
+        <!--card-->
+        <div id="card" class="avatar">
+            <!--表-->
+            <div id="card-front">
+                <div class="avatar" style="display: block; background-image: url(../../static/img/megchan2.jpg)">
+
+                </div>
+            </div>
+            <!--裏-->
+            <div id="card-back">
+                uramen
+            </div>
+        </div>
+        <!--btn-->
+        <div id="button">
+            <img src="../../static/img/info.jpg" height="50" width="50"/>
+        </div>
+    </div>
+
+
+
+    <!--<div class="buddy"><div class="avatar" style="display: block; background-image: url(../../static/img/megchan3.jpg)"></div></div>-->
+    <!--<div class="buddy"><div class="avatar" style="display: block; background-image: url(../../static/img/megchan4.jpg)"></div></div>-->
+    <!--<div class="buddy"><div class="avatar" style="display: block; background-image: url(../../static/img/megchan5.jpg)"></div></div>-->
+</div>
+
+<!--  flip div -->
+<!--<div>-->
+    <!--<div id="card">-->
+        <!--<div id="card-front">-->
+            <!--<img src="../../static/img/megchan2.jpg" height="500"-->
+                 <!--width="390"/>-->
+        <!--</div>-->
+        <!--<div id="card-back">uramen</div>-->
+    <!--</div>-->
+    <!--<div id="button">-->
+        <!--<img src="../../static/img/info.jpg" height="50" width="50"/>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+<!-- TODO LIST  -->
+<!--
+
+
+
+-->
+
+
+
+<style>
+    body {
+        margin: 0;
+        background: #e0e0e0;
+        text-align: center;
+    }
+
+
+
+    /*  flip css start from  */
+    #card {
+        margin: 1px auto 45px;
+        width: 400px;
+        height: 500px;
+        cursor: pointer;
+        font-size: 38px;
+        line-height: 100px;
+        perspective: 100px;
+        transform-style: preserve-3d;
+        transition: transform .8s;
+    }
+    #card-front, #card-back {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+        position: absolute;
+        backface-visibility: hidden;
+    }
+
+    #card-front {
+        background: #ffffff;
+    }
+
+    #card-back {
+        background: #000;
+        color: #fff;
+        transform: rotateY(180deg);
+    }
+    .mekuru {
+        transform: rotateY(180deg);
+    }
+
+
+
+
+
+
+
+    /*  tinder css start from */
+    #container {
+        width: 500px;
+        margin: auto !important;
+        display: block;
+        height: 500px;
+        position: relative;
+        list-style-type: none;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .buddy {
+        display: none;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        color: #fff;
+        padding: 20px;
+        padding-bottom: 200px;
+        width: 480px;
+        height: 440px;
+        top: 50px;
+        left: 50px;
+        position: absolute;
+        cursor: hand;
+    }
+    .rotate-left {
+        transform: rotate(30deg) scale(0.8);
+        transition: 1s;
+        margin-left: 400px;
+        cursor: e-resize;
+        opacity: 0;
+        z-index: 10;
+    }
+    .rotate-right {
+        transform: rotate(-30deg) scale(0.8);
+        transition: 1s;
+        opacity: 0;
+        margin-left: -400px;
+        cursor: w-resize;
+        z-index: 10;
+    }
+    .avatar {
+        background: #fff;
+        /*width: 460px;*/
+        height: 500px;
+        /*display: block;*/
+        /*margin-top: 10px;*/
+        /*margin-left: 10px;*/
+        background-size: auto 100% !important;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .like {
+        border-radius: 5px;
+        padding: 5px 10px;
+        border: 2px solid green;
+        color: green;
+        text-transform: uppercase;
+        font-size: 15px;
+        position: absolute;
+        top: 50px;
+        right: 40px;
+        text-shadow: none;
+    }
+    .dislike {
+        border-radius: 5px;
+        padding: 5px 10px;
+        border: 2px solid red;
+        color: red;
+        text-transform: uppercase;
+        font-size: 15px;
+        position: absolute;
+        top: 50px;
+        left: 40px;
+        text-shadow: none;
+    }
+
+    .heart {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left: 80%;
+        top: 90%;
+        transform: translate(-50%, -50%);
+        background: url(https://cssanimation.rocks/images/posts/steps/heart.png) no-repeat;
+        background-position: 0 0;
+        cursor: pointer;
+        animation: fave-heart 1s steps(28);
+    }
+    .heart:hover {
+        background-position: -2800px 0;
+        transition: background 1s steps(28);
+    }
+    @keyframes fave-heart {
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: -2800px 0;
+        }
+    }
+
+</style>
+
+<script>
+    $(document).ready(function(){
+
+        $(".buddy").on("swiperight",function(){
+            $(this).addClass('rotate-left').delay(700).fadeOut(1);
+            $('.buddy').find('.status').remove();
+
+            $(this).append('<div class="status like">Like!</div>');
+            if ( $(this).is(':last-child') ) {
+                $('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
+            } else {
+                $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
+            }
+        });
+
+        $(".buddy").on("swipeleft",function(){
+            $(this).addClass('rotate-right').delay(700).fadeOut(1);
+            $('.buddy').find('.status').remove();
+            $(this).append('<div class="status dislike">Dislike!</div>');
+
+            if ( $(this).is(':last-child') ) {
+                $('.buddy:nth-child(1)').removeClass ('rotate-left rotate-right').fadeIn(300);
+                alert('OUPS');
+            } else {
+                $(this).next().removeClass('rotate-left rotate-right').fadeIn(400);
+            }
+        });
+
+    });
+</script>
+
+<!--  flip js    -->
+<script>
+    (function() {
+        'use strict';
+        // buttonidを引っ張ってきて、クリックするとturnoverファンクションをする。
+        var button = document.getElementById('button');
+        button.addEventListener('click', function() {
+            turnover();
+        });
+        <!--　turnoverファンクションはカードをめくるファンクションだからこのままでいい。　　　　　-->
+        function turnover() {
+            if(card.className = card.className === ''){
+                card.className = 'mekuru';
+            }else{
+                card.className = '';
+            }
+        }
+    })();
+</script>
+
+
+
+
+</body>
+
+</html>

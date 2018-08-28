@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>カードめくり</title>
+    <style>
+        body {
+            margin: 0;
+            background: #e0e0e0;
+            text-align: center;
+        }
+
+        #card {
+            margin: 60px auto 20px;
+            width: 400px;
+            height: 500px;
+            cursor: pointer;
+            font-size: 38px;
+            line-height: 100px;
+            perspective: 100px;
+            transform-style: preserve-3d;
+            transition: transform .8s;
+        }
+        #card-front, #card-back {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            position: absolute;
+            backface-visibility: hidden;
+        }
+
+        #card-front {
+            background: #ffffff;
+        }
+
+        #card-back {
+            background: #000;
+            color: #fff;
+            transform: rotateY(180deg);
+        }
+        .mekuru {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+
+
+
+<!--  flip div -->
+    <div>
+        <div id="card">
+            <!--表-->
+            <div id="card-front">
+                <img src="../../static/img/megchan2.jpg" height="500" width="390"/>
+            </div>
+            <!--裏-->
+            <div id="card-back">
+                uramen
+            </div>
+
+        </div>
+        <div id="button">
+            <img src="../../static/img/info.jpg" height="50" width="50"/>
+        </div>
+    </div>
+
+
+
+<script>
+    (function() {
+        'use strict';
+        // buttonidを引っ張ってきて、クリックするとturnoverファンクションをする。
+        var button = document.getElementById('button');
+        button.addEventListener('click', function() {
+            turnover();
+        });
+        <!--　turnoverファンクションはカードをめくるファンクションだからこのままでいい。　　　　　-->
+        function turnover() {
+            if(card.className = card.className === ''){
+                card.className = 'mekuru';
+            }else{
+                card.className = '';
+            }
+        }
+    })();
+</script>
+</body>
+
+</html>
